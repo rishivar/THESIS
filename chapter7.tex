@@ -1,0 +1,105 @@
+\chapter{IMPLEMENTATION}
+
+The implementation of models mentioned in Chapter 6 was performed using the Scikit-Learn library \cite{E}. For each code submission task, the dataset was split in the ratio 70:30 for training and testing. With respective to the hyper-parameters initialized for the individual models, 
+
+\begin{itemize}
+    \item The MLP regressor model was initialised with a single hidden layer with 100 neurons. The maximum iterations parameter was set to 5000. 
+    \item The Random Forest Regressor was initialised with 100 estimators(decision trees).
+    \item The Support Vector Regressor was initialised with radial basis function kernel.
+\end{itemize} 
+
+% Talk about train test split
+
+\section{METRICS}
+ 
+
+\subsection{Mean Absolute Error (MAE)}
+
+\[ MAE = \frac{\sum_{i=1}^{n}|t_i-y_i|}{n} \]
+
+MAE is the mean of magnitude of difference between true value '$t_{i}$' and prediction '$y_{i}$' of 'n' observations.
+
+\subsection{Root Mean Absolute Error (RMSE)}
+
+\[ RMSE = \sqrt{\frac{\Sigma_{i=1}^{n}{|t_i-y_i|}^2}{n}} \]
+
+RMSE is the square root of the mean of residuals (difference between between true value '$t_{i}$' and prediction '$y_{i}$') of 'n' observations 
+
+\section{RESULTS}
+
+The observed values of MAE and RMSE obtained for the different set of tasks are reported in sub sections 7.2.1 - 7.2.4. The values enclosed in brackets report scores observed with feature selection and the values not enclosed in brackets report scores observed without feature selection. 
+
+\subsection{Selection Sort}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|c|c|c|}
+\hline
+\textbf{Model} & \textit{\textbf{MAE}} & \textit{\textbf{RMSE}} \\ \hline
+\textbf{SVM}   & 1.35 \textbf{(1.27)}           & 1.94 \textbf{(1.84)}            \\ \hline
+\textbf{MLP}   & 2.18 \textbf{(3.29)}           & 2.60 \textbf{(3.61)}             \\ \hline
+\textbf{RF}    & 1.18 \textbf{(1.17)}           & 1.87 \textbf{(1.83)}            \\ \hline
+\end{tabular}
+\caption{Results - Selection Sort}
+\label{tab:selsort}
+\end{table}
+
+From table 7.1, we observe that Random Forest outperforms SVM and MLP in performance. 
+
+
+\subsection{First Negative Item in List}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|c|c|c|}
+\hline
+\textbf{Model} & \textit{\textbf{MAE}} & \textit{\textbf{RMSE}} \\ \hline
+\textbf{SVM}   & 2.13 \textbf{(2.11)}           & 2.97 \textbf{(2.99)}            \\ \hline
+\textbf{MLP}   & 3.02 \textbf{(3.13)}           & 3.80 \textbf{(3.90)}            \\ \hline
+\textbf{RF}    & 1.60 \textbf{(1.64)}           & 2.15 \textbf{(2.20)}            \\ \hline
+\end{tabular}
+\caption{Results - First Negative Item in List}
+\label{tab:first-neg}
+\end{table}
+
+From table 7.24, we observe that Random Forest outperforms SVM and MLP in performance. 
+
+
+\subsection{Largest Item in List}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|c|c|c|}
+\hline
+\textbf{Model} & \textit{\textbf{MAE}} & \textit{\textbf{RMSE}} \\ \hline
+\textbf{SVM}   & 2.19 \textbf{(1.89)}           & 2.85 \textbf{(2.35)}            \\ \hline
+\textbf{MLP}   & 2.73 \textbf{(3.28)}           & 3.61 \textbf{(4.23) }           \\ \hline
+\textbf{RF}    & 1.51 \textbf{(1.47)}           & 2.10 \textbf{(2.07)}            \\ \hline
+\end{tabular}
+\caption{Results - Largest Item in List}
+\label{tab:larg-list}
+\end{table}
+
+From table 7.3, we observe that Random Forest outperforms SVM and MLP in performance. 
+
+
+\subsection{Unique Character count in a string}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|c|c|c|}
+\hline
+\textbf{Model} & \textit{\textbf{MAE}} & \textit{\textbf{RMSE}} \\ \hline
+\textit{SVM} & 2.63 \textbf{(2.68)} & 3.19 \textbf{(3.23)} \\ \hline
+\textit{MLP} & 3.11 \textbf{(2.71)} & 3.93 \textbf{(2.86)} \\ \hline
+\textit{RF} & 2.16 \textbf{(2.19)} & 2.62 \textbf{(2.64)} \\ \hline
+\end{tabular}
+\caption{Results - Unique Characters count in a string}
+\label{tab:unique}
+\end{table}
+
+From table 7.4, we observe that Random Forest outperforms SVM and MLP in performance. 
+
+\section{INFERENCE}
+
+YET TO BE FILLED

@@ -1,0 +1,31 @@
+
+\chapter{FEEDBACK GENERATION}
+
+After prioritizing the best regression models for each problem, we move on to using the selected model for generating feedback. The feedback generation process follows a cyclic information flow where the model is verified each time for a change depending on the input change and the corresponding change is reflected as feedback. The following subsections detail on the process of how constructive feedback is generated. 
+
+\section{GOLDEN FEATURE VECTOR}
+
+The Golden feature vector $F$ is the best feature vector that is calculated for each problem. In retrospect, the golden feature vector is the average of feature vectors of all code solutions submitted for the program that have score greater than or equal to an empirically decided threshold. 
+
+At any instance, the Golden feature vector represents the correct and accurate code solutions for a particular problem. The goal of this vector is to act as a comparison tool for feature vectors that require feedback/optimization. 
+
+\section{ALGORITHM}
+
+Now, to generate feedback for a particular target program $x$ with $x_{i}$ features where i = 0,1,2...n (n - number of features) - we perform an iterative process of replacing one of the features $x_{i}$ with the corresponding feature value $X_{i}$ from the program's Golden Feature vector $F$. Now, the new modified feature vector is passed as input into the regression model. 
+
+\begin{itemize}
+
+    \item If the output score improves after replacement, now we compare $x_{i}$ and $X_{i}$.
+
+        \begin{itemize}
+                \item If $x_{i}$ $>$ $X_{i}$ - Feedback to decrease that particular feature in the program is advised. 
+                \item If $x_{i}$ $<$ $X_{i}$ - Feedback to increase the particular feature in the program is advised.
+        \end{itemize}
+        
+    \item If the output score decreases after replacement, we consider the next feature in $x_{i}$
+    
+    \item The above process is iterated until all the n features have been considered. 
+
+\end{itemize}
+
+In each iteration the goal of the algorithm is to make the target feature vector closer to the golden feature vector. Thereby the changes that are suggested as feedback are inferred to be optimization changes for the target vector and constructive feedback is provided. 
