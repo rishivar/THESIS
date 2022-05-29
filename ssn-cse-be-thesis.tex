@@ -13,12 +13,16 @@
 \usepackage{epsfig}
 \usepackage{verbatim} 
 \usepackage{soul}
+\bibliographystyle{apa}
 
 \usepackage{epsfig,graphics}
 \usepackage{amsmath, amsthm, amssymb}
 \usepackage{subfigure}
 \usepackage{tikz}
 \usepackage{float}
+
+\usepackage{graphicx}
+\usepackage[export]{adjustbox}
 %\usepackage{fancyhdr}
 %\usepackage{lipsum}
 
@@ -83,15 +87,15 @@ Certified further that to the best of my knowledge the work reported herein does
   \settowidth{\auclength}{(HEAD OF THE DEPARTMENT)}
 
 \begin{flushleft}
-  \parbox[t]{\auclength}{\textbf{Dr. T.T. Mirnalinee}\\
-    \textbf{Head of the Department}\\    
+  \parbox[t]{\auclength}{\textbf{Dr. T.T. MIRNALINEE}\\
+    \textbf{HEAD OF THE DEPARTMENT}\\    
     Professor,\\
     Department of CSE,\\
     SSN College of Engineering,\\
     Kalavakkam - 603 110}
   \hfill
-  \parbox[t]{\aulength}{\textbf{Dr. R.S. Milton}\\
-    \textbf{Supervisor}\\
+  \parbox[t]{\aulength}{\textbf{Dr. R.S. MILTON}\\
+    \textbf{SUPERVISOR}\\
     Professor,\\
     Department of CSE,\\
     SSN College of Engineering,\\
@@ -120,11 +124,10 @@ Submitted for the examination held on\ldots\ldots\ldots\ldots
 % The Abstract Page
 
 \acknowledgements{
-I thank GOD, the almighty for giving me strength and knowledge to do this project.
 
-I would like to thank and deep sense of gratitude to my guide \textbf{Dr. R.S. MILTON}, Associate Professor, Department of Computer Science and Engineering, for his valuable advice and suggestions as well as his continued guidance, patience and support that helped me to shape and refine my work.
+I would like to thank with deep sense of gratitude to my guide \textbf{Dr. R.S. MILTON}, Professor, Department of Computer Science and Engineering, for his valuable advice and suggestions as well as his continued guidance, patience and support that helped me to shape and refine my work.
 
-My sincere thanks to  \textbf{Dr. T.T. MIRNALINEE}, Professor and Head of the Department of Computer Science and Engineering, for her words of advice and encouragement and I would like to thank our project Coordinator \textbf{    Dr. R.S. MILTON}, Associate Professor, Department of Computer Science and Engineering for her valuable suggestions throughout this project.
+My sincere thanks to  \textbf{Dr. T.T. MIRNALINEE}, Professor and Head of the Department of Computer Science and Engineering, for her words of advice and encouragement and I would like to thank our project Coordinator \textbf{    Dr. R.S. MILTON}, Professor, Department of Computer Science and Engineering for her valuable suggestions throughout this project.
 
 I express my deep respect to the founder \textbf{Dr. SHIV NADAR}, Chairman, SSN Institutions. I also express my appreciation to our \textbf{Dr. V. E. ANNAMALAI}, Principal, for all the help he has rendered during this course of study.
 
@@ -140,7 +143,10 @@ Finally, I would like to thank my parents and friends for their patience, cooper
 \addtotoc{ABSTRACT} % Add the "Abstract" page entry to the Contents
 \abstract{ \begin{spacing}{2}
 
-Students learning to code can immensely benefit from personalized feedback for their specific codes to improve coding standards. However, evaluating the functionality and design quality to give personalized feedback is a very time consuming task for instructors and teaching assistants. Further, design quality is nuanced and is difficult to concisely express as a set of rules. For these reasons, we propose an end-to-end pipeline to both automatically assess the design of a program and provide personalized feedback to guide students on how to make corrections. The model’s effectiveness is evaluated on a corpus of student programs written in Python. The model has an average Mean Absolute Error(MAE) of 1.7 and average Root Mean Square Error(RMSE) of 2.3 when the programs are evaluated out of 10.\end{spacing}
+Students learning to code would benefit greatly from tailored feedback for each code submission in order to enhance coding standards. However, evaluating student code submissions and reviewing each one of them is a time consuming and tedious task for instructors and teaching assistants. For these reasons, we propose an end-to-end pipeline that automatically examines a program's design as well as its functionality to provide appropriate personalised feedback after evaluating the student code submission on a scale of one to ten. Three regressor models - Support Vector Regressor, Random Forest Regressor and Multi Layer Perceptron Regressor were trained with a dataset developed from a corpus of 480 Python programs submitted by students. In general, it was observed that the Random Forest Regressor outperformed the other two models. When the program submissions are graded out of ten, the Random Forest Regressor model has a mean absolute error (MAE) of 1.7 and root mean square error (RMSE) of 2.3.
+
+
+\end{spacing}
 }
 \clearpage
 %%% DUMMY PAGE FOR TAMIL ABSTRACT WHICH WILL BE PRINTED SEPARATELY
@@ -187,48 +193,62 @@ Students learning to code can immensely benefit from personalized feedback for t
 \input{chapter1} % INTRODUCTION
 \input{chapter2} % LITERATURE SURVEY
 \input{chapter3} % DESIGN
-\input{chapter4} % IMPLEMENTATION
-\input{chapter5} % CONCLUSION AND FUTURE WORK
+\input{chapter5} % IMPLEMENTATION
+\input{chapter4} % CONCLUSION AND FUTURE WORK
 \input{chapter6}
 \input{chapter7}
 \input{chapter8}
 \input{chapter9}
+\input{chapter10}
 \end{spacing}
 \newpage
 \appendix
-\input{chapter10}
 %\addtotoc{REFERENCES}
 %\input{References} 
 %\bibliographystyle{plain}
 %\bibliography{ref}
 \begin{thebibliography}{99}
-  \bibliographystyle{plain}
+  \bibliographystyle{apa}
   
-\bibitem[1]{A} Azcona, D., Arora, P., Hsiao, I. H., \& Smeaton, A. (2019, March). user2code2vec: Embeddings for profiling students based on distributional representations of source code. In Proceedings of the 9th International Conference on Learning Analytics \& Knowledge (pp. 86-95).
+\bibitem[1]{G} 2to3 - 'Automated Python 2to3 code translation' - https://docs.python.org/3/library/2to3.html 
 
+\bibitem[2]{F} 'AST module' Python 3.10.4- https://docs.python.org/3/library/ast.html
+  
+\bibitem[3]{A} Azcona, D., Arora, P., Hsiao, I. H., \& Smeaton, A. (2019) 'user2code2vec: Embeddings for profiling students based on distributional representations of source code' , In Proceedings of the 9th International Conference on Learning Analytics \& Knowledge, pp. 86-95.
 
-\bibitem[2]{T}Orr, J. Walker, and Nathaniel Russell. "Automatic Assessment of the Design Quality of Python Programs with Personalized Feedback." arXiv preprint arXiv:2106.01399 (2021).
+\bibitem[4]{O} Benjamin Paaßen, Barbara Hammer, Thomas William Price, Tiffany Barnes, Sebastian Gross, and Niels Pinkwart. (2017) 'The Continuous Hint Factory-Providing Hints in Vast and Sparsely Populated Edit Distance Spaces', arXiv preprint arXiv:1708.06564
 
-\bibitem[3]{G} 2to3 - Automated Python 2to3 code translation -https://docs.python.org/3/library/2to3.html
+\bibitem[5]{B} Breiman, L. (2001). 'Random forests - Machine Learning' 45, 5-32.
 
+\bibitem[6]{N} Chris Piech, Jonathan Huang, Andy Nguyen, Mike Phulsuksombati, Mehran Sahami, and Leonidas Guibas. (2015) 'Learning program embeddings to propagate feedback on student code' , In Proceedings of the 32nd International Conference on International Conference on Machine Learning-Volume 37. JMLR. org, 1093–1102.
 
-\bibitem[4]{F} AST module Python 3.10.4- https://docs.python.org/3/library/ast.html
+\bibitem[7]{D} Drucker, Harris, et al. (1996) 'Support vector regression machines', Advances in neural information processing systems, 9.
 
+\bibitem[8]{H} Jović, Alan, Karla Brkić, and Nikola Bogunović. (2015) 'A review of feature selection methods with applications' , 38th international convention on information and communication technology, electronics and microelectronics (MIPRO). Ieee, 2015.
 
-\bibitem[5]{H} Jović, Alan, Karla Brkić, and Nikola Bogunović. "A review of feature selection methods with applications." 2015 38th international convention on information and communication technology, electronics and microelectronics (MIPRO). Ieee, 2015.
+\bibitem[9]{Q} Lili Mou, Ge Li, Lu Zhang, Tao Wang, and Zhi Jin. (2016)  'Convolutional Neural Networks over Tree Structures for Programming Language Processing', In AAAI, Vol. 2. 4
 
-\bibitem[6]{E} Scikit-learn: Machine Learning in Python, Pedregosa et al., JMLR 12, pp. 2825-2830, 2011.
+\bibitem[10]{M} Lili Mou, Ge Li, Yuxuan Liu, Hao Peng, Zhi Jin, Yan Xu, and Lu Zhang. (2014) 'Building program vector representations for deep learning' arXiv preprint arXiv:1409.3358.
 
+\bibitem[11]{J} Maxim Rabinovich, Mitchell Stern, and Dan Klein. (2017) 'Abstract syntax networks for code generation and semantic parsing' ,arXiv preprint arXiv:1704.07535.
 
-\bibitem[7]{D} Drucker, Harris, et al. "Support vector regression machines." Advances in neural information processing systems 9 (1996).
+\bibitem[12]{L} Miltiadis Allamanis, Hao Peng, and Charles Sutton. (2016) 'A convolutional attention network for extreme summarization of source code', In International Conference on Machine Learning.' 2091–2100.
 
-\bibitem[8]{B} Breiman, L. (2001). “Random forests - Machine Learning” 45, 5-32.
+\bibitem[13]{C} Murtagh, Fionn. (1991) 'Multilayer perceptrons for classification and regression' ,Neurocomputing 2.5-6 : 183-197.
 
+\bibitem[14]{T}Orr, J. Walker, and Nathaniel Russell. (2021) 'Automatic Assessment of the Design Quality of Python Programs with Personalized Feedback' , arXiv preprint arXiv:2106.01399 .
 
-\bibitem[9]{C} Murtagh, Fionn. "Multilayer perceptrons for classification and regression." Neurocomputing 2.5-6 (1991): 183-197.
+\bibitem[15]{E} Pedregosa et al.,  (2011) 'Scikit-learn: Machine Learning in Python' JMLR 12, pp. 2825-2830.
 
+\bibitem[16]{S} Pylint.org. 'Pylint - code analysis for python'. https://pylint.org.
 
+\bibitem[17]{P} Sebastian Gross, Bassam Mokbel, Benjamin Paaßen, Barbara Hammer, and Niels Pinkwart. (2014) 'Example-based feedback provision using structured solution spaces',International Journal of Learning Technology 10 9, 3 , 248–280.
 
+\bibitem[18]{R} Sebastian Proksch, Sven Amann, Sarah Nadi, and Mira Mezini. (2016) 'A dataset of simplified syntax trees for C' , In Proceedings of the 13th International Conference on Mining Software Repositories. ACM, 476–479.
+
+\bibitem[19]{I} Uri Alon, Meital Zilberstein, Omer Levy, and Eran Yahav. (2018) 'A general path-based representation for predicting program properties', arXiv preprint arXiv:1803.09544.
+
+\bibitem[20]{K} Veselin Raychev, Martin Vechev, and Eran Yahav. (2014). 'Code completion with statistical language models',In Acm Sigplan Notices, Vol. 49. ACM, 419–428.
 
 
 \end{thebibliography}
