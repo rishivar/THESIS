@@ -1,19 +1,14 @@
 \chapter{CONCLUSION}
 
 We proposed a pipeline for grading a student code submission out of 10
-which will also provide appropriate feedback to improve the code. The
-features were retrieved from both the source code and the AST
-representation of the source code. The feature set for each coding
+which will also provide appropriate feedback to improve the code. The student programs were represented using 17 features which were retrieved from the submitted codes and from the AST representation of the codes. Feature set for each coding
 assignment was optimised via feature selection. The initial dataset
-created by us was used to train three regressor models such as Support
-Vector regressor, Multi Layer Perceptron regressor and Random Forest
+created by us was used to train three regressor models such as Linear SVR, MLP regressor and Random Forest
 Regressor. The Random Forest regressor was shown to be the most
-effective for this issue statement. The Random Forest Regressor model
+effective for this problem statement. The Random Forest Regressor model
 has a MAE of 1.7 and RMSE of 2.3.
 
-Furthermore, depending on the difference between a program's feature
-values and the average feature values of ``excellent'' programs, our
-model provides personalised feedback.  Whenever a student submits a
+Furthermore, our technique delivers personalised feedback for a program by comparing its feature vector with the average feature vector of the "excellent" programs submitted by students.Whenever a student submits a
 code, he will be given feedback instantly to help him improve his
 code.  Students can also view the best code submission after the
 assignment deadline. The Streamlit framework was used to deploy this

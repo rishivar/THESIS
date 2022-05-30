@@ -25,8 +25,7 @@ feedback/improvement.
 \section{ALGORITHM}
 
 Now, to generate feedback for a particular target program $x$ with
-$x_{i}$ features where $i = 0,1,2, \ldots n$ ($n$ is the number of
-features), we perform an iterative process of replacing one of the
+$x_{i}$ features where 'i' ranges between 0 to 17, we perform an iterative process of replacing one of the
 features $x_{i}$ with the corresponding feature value $X_{i}$ from the
 program's golden feature vector $F$. Now, the new modified feature
 vector is passed as input into the regression model.
@@ -35,10 +34,8 @@ vector is passed as input into the regression model.
 \item If the output score improves after replacement, now we compare
   $x_{i}$ and $X_{i}$.
   \begin{itemize}
-  \item If $x_{i} > X_{i}$, feedback is to decrease that particular
-    feature in the program is advised.
-  \item If $x_{i}<X_{i}$, feedback is to increase the particular
-    feature in the program is advised.
+  \item If $x_{i} > X_{i}$, it is advised to decrease that feature in the program.
+  \item If $x_{i}<X_{i}$, it is advised to decrease that feature in the program.
   \end{itemize}
 \item If the output score decreases after replacement, we consider the
   next feature in $x_{i}$

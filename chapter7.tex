@@ -1,6 +1,6 @@
 \chapter{IMPLEMENTATION}
 
-The implementation of models mentioned in Chapter 6 was performed
+Implementation of the models mentioned in Chapter 4 was performed
 using the Scikit-Learn library \cite{E}. For each code submission
 task, the dataset was split in the ratio 70:30 for training and
 testing, with respective hyper-parameters initialized for the
@@ -22,12 +22,18 @@ individual models,
 \emph{Mean Absolute Error (MAE)}:
 MAE is the mean of magnitude of difference between true value
 $t_{i}$ and prediction $y_{i}$ of $n$ observations.
-\[ MAE = \frac{\sum_{i=1}^{n}|t_i-y_i|}{n} \]
+\begin{equation}
+   MAE = \frac{\sum_{i=1}^{n}|t_i-y_i|}{n} 
+\end{equation}
 
-\emph{Root Mean Absolute Error (RMSE)}: RMSE is the square root of the
+
+\emph{Root Mean Square Error (RMSE)}: RMSE is defined as the square root of the
 mean of residuals (difference between between true value '$t_{i}$' and
 prediction '$y_{i}$') of 'n' observations
-\[ RMSE = \sqrt{\frac{\Sigma_{i=1}^{n}{|t_i-y_i|}^2}{n}} \]
+\begin{equation}
+    RMSE = \sqrt{\frac{\Sigma_{i=1}^{n}{|t_i-y_i|}^2}{n}} 
+\end{equation}
+
 
 
 \section{RESULTS}
@@ -118,13 +124,7 @@ From Table 7.4, we observe that Random Forest outperforms SVM and MLP in perform
 
 The number of features in the dataset is a relatively small (only 17
 features). And with feature selection, the number reduces even
-further. Since random forest regressor is a ensemble of various
-decision trees, and the decision trees in turn output a score based on
-the feature value conditions (for instance, when functions = 3 for
-selection sort task, the decision tree will output a better score),
-random forest regressor fits well with the test data when compared to
-the other two models. Thus, Random forest regressor outperforms the
-linear support vector regressor and multi layer perceptron regressor.
+further.  As mentioned earlier, various decision tree together comprise a random forest regression model. Since decision trees output a score based on feature value conditions(for instance, when functions = 3 for selection sort task, the decision tree will output a better score) and the outputs of the decision trees are ensembled, the random forest regression algorithm fits well with this data and outperforms the other two models in this case.
 
 Since it is not possible to visualise the 17 features in 2 dimensions,
 the sum of all the features was plotted against the program score.
@@ -150,11 +150,11 @@ points. The three plots are for the selection sort task.
 \begin{figure}[H]
 \centering
 \includegraphics[scale=1.0]{./figures/ss_mlp.png}
-\caption{Actual score vs score predicted by Multi Layer Perceptron Regressor}
+\caption{Actual score vs score predicted by MLP Regressor}
 \label{fig_rf}
 \end{figure}
 
-While multi-layer perceptron regressor and linear support vector
+While MLP regressor and linear support vector
 regressor can output a score greater than 10 or lesser than 0, random
 forest regressor always outputs a score in the range of 0 to 10. This
 characteristic of random forest regressor is accounted by the decision
@@ -174,7 +174,5 @@ regressor, as shown in Figure~7.1, the scores always lie between 0 and
 in general. In case of Support Vector Regressor, as shown in Figure
 7.2, a couple of samples were given a score of over 10. In case of
 multi layer perceptron, one code sample was given a score over 14.
-So, it can be inferred that Random Forest regressor is the most suited
-regression model for automatic grading of student programs.
-
+Thus,it can be inferred that random forest regressor is the best suited choice of regression algorithm to grade student programs automatically.
 

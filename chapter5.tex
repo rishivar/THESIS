@@ -15,7 +15,7 @@ size of the dataset and basing our task to an educational context
 where student assignments are constantly being updated, we considered
 a subset of 4 different programming questions to provide constructive
 feedback. The shortlisted programs and descriptions for each are
-listed in Table 4.1. For each task, 120 different code solutions were
+listed in Table 3.1. For each task, 120 different code solutions were
 randomly selected.  Overall, for the 4 different questions, 480 code
 solutions were compiled for experimentation.
 
@@ -48,7 +48,7 @@ goodness of the code solutions to the particular
 problem. Accordingly, higher numeric score represents a
 correct and better code solution to the problem and lower
 numeric score represents an incorrect or non-optimal code
-solution.  Figure~4.1 represents the flowchart architecture
+solution.  Figure~3.1 represents the flowchart architecture
 for dataset annotation.
 
 \begin{figure}[h]
@@ -68,7 +68,7 @@ value balancing the code's design and functionality.
 For design, considering each problem has its own set of
 parameters to satisfy, the grading rubric is adjusted based
 on this requirement. The parameters used for evaluating
-design is mentioned in Table~4.2. Tables~4.3 to 4.6 details
+design is mentioned in Table~3.2. Tables~3.3 to 3.6 details
 the appropriate score to respective problems based on their
 necessary individual criteria for each different task.
         
@@ -236,7 +236,7 @@ Efficiency \\ \hline
 \newpage
 
 For \textbf{functionality}, the following rubric mentioned in
-Table~4.7 was followed to give a score in a scale of 5. The
+Table~3.7 was followed to give a score in a scale of 5. The
 correctness and completeness of the code was considered to
 grade the code submissions.
 
@@ -264,7 +264,7 @@ generated to be used for the subsequent experimentation.
 
 \subsection{Example Code Submissions}
 
-Figures~4.2 to 4.9 document the examples of best and worst
+Figures~3.2 to 3.9 document the examples of best and worst
 programs for each problem with scores assigned using the
 developed grading rubric.
 
@@ -285,7 +285,7 @@ developed grading rubric.
 \end{figure}
 
 
-Figures 4.2 is one of the best program submissions for the
+Figures 3.2 is one of the best program submissions for the
 selection sort task. The program was properly structured with
 three functions, one to do swapping, one to find smallest
 element's position from a given index from the list, and
@@ -293,7 +293,7 @@ finally the sort function which will utilise the first two
 functions inside a loop to sort the list. Hence, it was
 awarded a perfect 10/10.
 
-Figure 4.3 is one of the worst program submissions. This code
+Figure 3.3 is one of the worst program submissions. This code
 solution has a swap function defined but with wrong logic. A
 unnecessary global variable 'a' was declared. The logic of
 the swap function was not right. Hence this solution was
@@ -316,13 +316,13 @@ graded 1/10.
 \label{fig1}
 \end{figure}
 
-Figure~4.4 shows a good solution for finding the first
+Figure~3.4 shows a good solution for finding the first
 negative element in the list. The loop traverses the list
 until it finds the first negative element. When that index
 belongs to the list, the program prints the first negative
 element. The program is graded a perfect 10/10.
 
-Figure~4.5 shows one of the bad code solutions submitted. The
+Figure~3.5 shows one of the bad code solutions submitted. The
 program is graded only 3/10 for using wrong logic and also
 for improper declaration and use of variables.
 
@@ -346,14 +346,14 @@ for improper declaration and use of variables.
 \label{fig1}
 \end{figure}
 
-Figure 4.6 is one of the best program submissions for the
+Figure 3.6 is one of the best program submissions for the
 unique character count task. The code is properly organised,
 modular with three functions and the code has perfect
 logic. No unnecessary global variable is defined. Thus, this
 particular submission was awarded with the perfect score of
 10.
 
-Figure 4.7 on the other hand shows one of the worst
+Figure 3.7 on the other hand shows one of the worst
 submissions for this particular task. No functions have been
 defined. An unnecessary global variable was declared. The
 code would not yield the expected result. Thus, this code was
@@ -379,14 +379,14 @@ only given a score of 1.
 
 \newpage
 
-Figure 4.8 is one of the best student code submissions for
+Figure 3.8 is one of the best student code submissions for
 the largest element task. This particular solution has the
 right logic.  Variables have been used properly. The program
 prints the correct position of the largest element in the
 list. Looping and conditional statements have been used
 correctly. Thus, this solution was awarded as score of 10.
 
-Figure 4.9 is one of the worst student submissions for this
+Figure 3.9 is one of the worst student submissions for this
 task. Variables have not been properly used. The logic used
 is also wrong. Hence, this code solution was only given a
 score of 2.
@@ -416,8 +416,8 @@ extracting meaningful features from the dataset.
   variety of features can be extracted from this ast
   representation with the help of `walk()' function provided
   by the `ast' module. The extracted features from the AST
-  representation are documented in Table~4.9. Other features
-  derived from code are represented in Table~4.8.
+  representation are documented in Table~3.9. Other features
+  derived from code are represented in Table~3.8.
 \end{itemize}
 
 \begin{table}[H]
@@ -471,14 +471,13 @@ globals               & Count of globals variables in the code                  
 \end{table}
 
 
-Ultimately a total of 17 features were extracted from the
-code and the AST representation of the code.
+Ultimately we extracted 17 features(11 from source code and 6 from AST representation of source code).
 
 \newpage
 \section{FEATURE SELECTION}
 
 After extracting meaningful features from both the code and
-AST representation (Table~4.8, Table~4.9), feature
+AST representation (Table~3.8, Table~3.9), feature
 selection is performed for each problem considering feature
 sets for each problem are independent of each other and are
 problem dependent.
@@ -509,7 +508,7 @@ features.
 
 \subsection{Implementation}
 
-Tables~4.10 to 4.14 report the F-Statistic score of the
+Tables~3.10 to 3.14 report the F-Statistic score of the
 features set with their respective scores. The strike-through
 text in features list of the tables represent the features
 that are dropped due to their low $f{reg}$ score.
@@ -541,7 +540,7 @@ that are dropped due to their low $f{reg}$ score.
     \label{ss_f}
   \end{table}
             
-  From Table 4.10, it can be observed that for 'Selection
+  From Table 3.10, it can be observed that for 'Selection
   sort' task, the number of functions, loops, function calls,
   variable uses and comparison operators have a very strong
   correlation with the output score. The first 13 features
@@ -575,7 +574,7 @@ that are dropped due to their low $f{reg}$ score.
     \label{fn_f}
   \end{table}
 
-  From Table 4.11, it is observed that for the 'First
+  From Table 3.11, it is observed that for the 'First
   negative element in the list' task, the number of
   comparison statements have a large correlation on the
   output variable. The number of variable uses and the number
@@ -611,7 +610,7 @@ cond             & 3.35                  \\ \hline
 \label{la_f}
 \end{table}
 
-From Table 4.12, it is observed for the 'Largest element in
+From Table 3.12, it is observed for the 'Largest element in
 the list' task, the number of assignment statements,
 arithmetic operators and variable uses have a great influence
 on the final target value. With a minimum cutoff of a F-reg
@@ -648,7 +647,7 @@ score 1.0 the top 8 features are selected.
 \label{uc_f}
 \end{table}
 
-From Table 4.13, it is observed for the unique character
+From Table 3.13, it is observed for the unique character
 count in a string, the number of logical operators has the
 highest influence on the final target output. This is due to
 the number of 'not' and 'not in' operators. With a minimum
