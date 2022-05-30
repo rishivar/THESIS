@@ -1,33 +1,42 @@
 \chapter{IMPLEMENTATION}
 
-The implementation of models mentioned in Chapter 6 was performed using the Scikit-Learn library \cite{E}. For each code submission task, the dataset was split in the ratio 70:30 for training and testing. With respective to the hyper-parameters initialized for the individual models, 
+The implementation of models mentioned in Chapter 6 was performed
+using the Scikit-Learn library \cite{E}. For each code submission
+task, the dataset was split in the ratio 70:30 for training and
+testing, with respective hyper-parameters initialized for the
+individual models,
 
 \begin{itemize}
-    \item The MLP regressor model was initialised with a single hidden layer with 100 neurons. The maximum iterations parameter was set to 5000. 
-    \item The Random Forest Regressor was initialised with 100 estimators(decision trees).
-    \item The Support Vector Regressor was initialised with linear kernel.
-\end{itemize} 
+\item The MLP regressor model was initialised with a single hidden
+  layer with 100 neurons. The maximum iterations parameter was set to
+  5000.
+\item The Random Forest regressor was initialised with 100
+  estimators (decision trees).
+\item The Support Vector Regressor was initialised with linear kernel.
+\end{itemize}
 
 % Talk about train test split
 
 \section{METRICS}
  
-
-\subsection{Mean Absolute Error (MAE)}
-
+\emph{Mean Absolute Error (MAE)}:
+MAE is the mean of magnitude of difference between true value
+$t_{i}$ and prediction $y_{i}$ of $n$ observations.
 \[ MAE = \frac{\sum_{i=1}^{n}|t_i-y_i|}{n} \]
 
-MAE is the mean of magnitude of difference between true value '$t_{i}$' and prediction '$y_{i}$' of 'n' observations.
-
-\subsection{Root Mean Absolute Error (RMSE)}
-
+\emph{Root Mean Absolute Error (RMSE)}: RMSE is the square root of the
+mean of residuals (difference between between true value '$t_{i}$' and
+prediction '$y_{i}$') of 'n' observations
 \[ RMSE = \sqrt{\frac{\Sigma_{i=1}^{n}{|t_i-y_i|}^2}{n}} \]
 
-RMSE is the square root of the mean of residuals (difference between between true value '$t_{i}$' and prediction '$y_{i}$') of 'n' observations 
 
 \section{RESULTS}
 
-The observed values of MAE and RMSE obtained for the different set of tasks are reported in sub sections 7.2.1 - 7.2.4. The values enclosed in brackets report scores observed with feature selection and the values not enclosed in brackets report scores observed without feature selection. 
+The observed values of MAE and RMSE obtained for the different sets of
+tasks are reported in subsections 7.2.1 to 7.2.4. The values enclosed
+in brackets report scores observed with feature selection and the
+values not enclosed in brackets report scores observed without feature
+selection.
 
 \subsection{Selection Sort}
 
@@ -45,9 +54,9 @@ The observed values of MAE and RMSE obtained for the different set of tasks are 
 \label{tab:selsort}
 \end{table}
 
-From table 7.1, we observe that Random Forest outperforms SVM and MLP in performance. 
+From Table~7.1, we observe that Random Forest outperforms SVM and MLP in performance. 
 
-\newpage
+%\newpage
 
 \subsection{First Negative Item in List}
 
@@ -65,7 +74,7 @@ From table 7.1, we observe that Random Forest outperforms SVM and MLP in perform
 \label{tab:first-neg}
 \end{table}
 
-From table 7.2, we observe that Random Forest outperforms SVM and MLP in performance. 
+From Table 7.2, we observe that Random Forest outperforms SVM and MLP in performance. 
 
 
 \subsection{Largest Item in List}
@@ -84,7 +93,7 @@ From table 7.2, we observe that Random Forest outperforms SVM and MLP in perform
 \label{tab:larg-list}
 \end{table}
 
-From table 7.3, we observe that Random Forest outperforms SVM and MLP in performance. 
+From Table 7.3, we observe that Random Forest outperforms SVM and MLP in performance. 
 
 
 \subsection{Unique Character count in a string}
@@ -103,14 +112,26 @@ From table 7.3, we observe that Random Forest outperforms SVM and MLP in perform
 \label{tab:unique}
 \end{table}
 
-From table 7.4, we observe that Random Forest outperforms SVM and MLP in performance. 
+From Table 7.4, we observe that Random Forest outperforms SVM and MLP in performance. 
 
 \section{INFERENCE}
 
-The number of features in the dataset is a comparitively smaller figure (only 17 features). And with feature selection, the number even reduces. Since random forest regressor is a ensemble of various decision trees, and the decision trees in turn output a score based on the feature value conditions(For instance when functions=3 for selection sort task, the decision tree will output a better score), random forest regressor fits well with the test data when compared to the other two models. Thus, Random forest regressor outperforms the linear support vector regressor and multi layer perceptron regressor. 
+The number of features in the dataset is a relatively small (only 17
+features). And with feature selection, the number reduces even
+further. Since random forest regressor is a ensemble of various
+decision trees, and the decision trees in turn output a score based on
+the feature value conditions (for instance, when functions = 3 for
+selection sort task, the decision tree will output a better score),
+random forest regressor fits well with the test data when compared to
+the other two models. Thus, Random forest regressor outperforms the
+linear support vector regressor and multi layer perceptron regressor.
 
-Since it is not possible to visualise the 17 features in 2 dimensions, the sum of all the features was plotted against the program score.
-Figures 7.1 - 7.3 show the difference between the actual score (points plotted in orange) and the predicted score by the three regressors. The difference is represented as a line between the points. The three plots are for the selection sort task.
+Since it is not possible to visualise the 17 features in 2 dimensions,
+the sum of all the features was plotted against the program score.
+Figures 7.1 to 7.3 show the difference between the actual score (points
+plotted in orange) and the predicted score by the three
+regressors. The difference is represented as a line between the
+points. The three plots are for the selection sort task.
 
 \begin{figure}[H]
 \centering
@@ -133,10 +154,27 @@ Figures 7.1 - 7.3 show the difference between the actual score (points plotted i
 \label{fig_rf}
 \end{figure}
 
-Also, while multi layer perceptron regressor and linear support vector regressor can output a score greater than 10 or lesser than 0, random forest regressor always outputs a score in the range of 0 to 10. This characteristic of random forest regressor is accounted by the decision trees which form the regressor. Since MLP regressor trains through backpropagation and support vector regressor tries to find the best hyperplane which contains maximum number of points, these models may output a score greater than 10. But in the case of random forest regressor, the model outputs a score based on the ensembling of various decision trees. The maximum score that can be awarded will be set as 10 and when a particular code submission passes all conditions(conditions are based on different feature values), that program will be graded with a score of 10. 
+While multi-layer perceptron regressor and linear support vector
+regressor can output a score greater than 10 or lesser than 0, random
+forest regressor always outputs a score in the range of 0 to 10. This
+characteristic of random forest regressor is accounted by the decision
+trees which form the regressor. Since MLP regressor trains through
+backpropagation and support vector regressor tries to find the best
+hyperplane which contains maximum number of points, these models may
+output a score greater than 10. But in the case of random forest
+regressor, the model outputs a score based on the ensembling of
+various decision trees. The maximum score that can be awarded will be
+set as 10 and when a particular code submission passes all conditions
+(conditions are based on different feature values), that program will
+be graded with a score of 10.
 
-This can be observed in the figures 7.1-7.3. In case of random forest regressor as in figure 7.1, the scores always lie between zero and ten. Also the difference between actual and predicted values is lesser in general. In case of Support Vector Regressor as in figure 7.2, a couple of samples were given a score of over 10. In case of multi layer perceptron, one code sample was given a score over 14.
-
-So, it can be inferred that Random Forest regressor is the most suited regression model for automatic grading of student programs.
+This can be observed in Figures 7.1 to 7.3. In case of random forest
+regressor, as shown in Figure~7.1, the scores always lie between 0 and
+10. Also, the difference between actual and predicted values is lesser
+in general. In case of Support Vector Regressor, as shown in Figure
+7.2, a couple of samples were given a score of over 10. In case of
+multi layer perceptron, one code sample was given a score over 14.
+So, it can be inferred that Random Forest regressor is the most suited
+regression model for automatic grading of student programs.
 
 

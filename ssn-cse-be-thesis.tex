@@ -1,7 +1,7 @@
 \documentclass[a4paper, 14pt, oneside]{Thesis}
-\usepackage{ulem}
+%\usepackage{ulem}
 \usepackage[square, numbers, comma, sort&compress]{natbib}  % Use the "Natbib" style for the references in the Bibliography
-\usepackage{verbatim} 
+
 \usepackage{pslatex} %To set the font as Times New Roman
 \usepackage{amsbsy} 
 \usepackage{amsfonts}
@@ -61,8 +61,8 @@
 
 \title{AUTOMATING CODE REVIEW FEEDBACK FOR STUDENT ASSIGNMENTS USING MACHINE LEARNING}
 \authors  {{ RAMAKRISHNAN A M  \hspace{0.4in} 185001124\\ \vspace{0.1in}}
-{ RISHI VARDHAN K  \hspace{0.4in} 185001126\\\vspace{0.1in}}
-{ SACHIN KRISHAN T  \hspace{0.4in} 185001128\\ } }
+{ RISHI VARDHAN K  \hspace{0.8in} 185001126\\\vspace{0.1in}}
+{ SACHIN KRISHAN T  \hspace{0.65in} 185001128\\ } }
 \addresses  {\\\Computer Science \& Engineering\\}
 \date       {\today}
 
@@ -79,22 +79,30 @@
 
 \Declaration{ 
 %
-Certified that this project report titled \textbf{``AUTOMATING CODE REVIEW FEEDBACK FOR STUDENT ASSIGNMENTS USING MACHINE LEARNING''} is the \textit{bonafide} work of ``\textbf{RAMAKRISHNAN A M (185001124)}, \textbf{RISHI VARDHAN K (185001126)}, and \textbf{SACHIN KRISHAN T (185001128)}'' who carried out the project work under my supervision.\\
-Certified further that to the best of my knowledge the work reported herein does not form part of any other thesis or dissertation on the basis of which a degree or award was conferred on an earlier occasion on this or any other candidate.
-  \newlength{\aulength} 
+  Certified that this project report titled
+  \textbf{AUTOMATING CODE REVIEW FEEDBACK FOR STUDENT
+    ASSIGNMENTS USING MACHINE LEARNING} is the \textit{bona
+    fide} work of \textbf{RAMAKRISHNAN A M (185001124)},
+  \textbf{RISHI VARDHAN K (185001126)}, and \textbf{SACHIN
+    KRISHAN T (185001128)} who carried out the project work
+  under my supervision.  Certified further that to the best
+  of my knowledge the work reported herein does not form part
+  of any other thesis or dissertation on the basis of which a
+  degree or award was conferred on an earlier occasion on
+  this or any other candidate.  \newlength{\aulength}
   \settowidth{\aulength}{SSN College of Engineering,}
-  \newlength{\auclength} 
-  \settowidth{\auclength}{(HEAD OF THE DEPARTMENT)}
+  \newlength{\auclength} \settowidth{\auclength}{(HEAD OF THE
+    DEPARTMENT)}
 
 \begin{flushleft}
-  \parbox[t]{\auclength}{\textbf{Dr. T.T. MIRNALINEE}\\
+  \parbox[t]{\auclength}{\textbf{Dr.~T.~T.~MIRNALINEE}\\
     \textbf{HEAD OF THE DEPARTMENT}\\    
     Professor,\\
     Department of CSE,\\
     SSN College of Engineering,\\
     Kalavakkam - 603 110}
   \hfill
-  \parbox[t]{\aulength}{\textbf{Dr. R.S. MILTON}\\
+  \parbox[t]{\aulength}{\textbf{Dr.~R.~S.~MILTON}\\
     \textbf{SUPERVISOR}\\
     Professor,\\
     Department of CSE,\\
@@ -125,27 +133,56 @@ Submitted for the examination held on\ldots\ldots\ldots\ldots
 
 \acknowledgements{
 
-I would like to thank with deep sense of gratitude to my guide \textbf{Dr. R.S. MILTON}, Professor, Department of Computer Science and Engineering, for his valuable advice and suggestions as well as his continued guidance, patience and support that helped me to shape and refine my work.
+  We would like to thank our guide \textbf{Dr.~R.~S.~MILTON},
+  Professor, for his valuable advice and suggestions as well
+  as his continued guidance, patience and support that helped
+  us shape and refine our work.
 
-My sincere thanks to  \textbf{Dr. T.T. MIRNALINEE}, Professor and Head of the Department of Computer Science and Engineering, for her words of advice and encouragement and I would like to thank our project Coordinator \textbf{    Dr. R.S. MILTON}, Professor, Department of Computer Science and Engineering for her valuable suggestions throughout this project.
+  Our sincere thanks to \textbf{Dr.~T.~T.~MIRNALINEE},
+  Professor and Head of the Department of Computer Science
+  and Engineering, for her words of advice and
+  encouragement.We would like to thank our project
+  Coordinator \textbf{Dr.~B.~Bharathi}, Associate Professor,
+  for her valuable suggestions throughout this project.
 
-I express my deep respect to the founder \textbf{Dr. SHIV NADAR}, Chairman, SSN Institutions. I also express my appreciation to our \textbf{Dr. V. E. ANNAMALAI}, Principal, for all the help he has rendered during this course of study.
+  Our express our deep respect to the founder
+  \textbf{Dr.~SHIV NADAR}, Chairman, SSN Institutions. We
+  also express our appreciation to our
+  \textbf{Dr.~V.~E.~ANNAMALAI}, Principal, for all the help
+  he has rendered during this course of study.
 
- I would like to extend my sincere thanks to all the teaching and non-teaching staffs of our department who have contributed directly and indirectly during the course of my project work.
-Finally, I would like to thank my parents and friends for their patience, cooperation and moral support throughout my life. 
-\newline
-\newline
-\newline
-{\bf RAMAKRISHNAN A M}\hfill {\bf RISHI VARDHAN K}\hfill {\bf SACHIN KRISHAN T}
-}
+  We would like to extend our sincere thanks to all the
+  teaching and non-teaching staffs of our department who have
+  contributed directly and indirectly during the course of
+  our project work.  Finally, we would like to thank our
+  parents and friends for their patience, cooperation and
+  moral support throughout our life.  \newline \newline
+  \newline {\bf RAMAKRISHNAN A M}\hfill {\bf RISHI VARDHAN
+    K}\hfill {\bf SACHIN KRISHAN T} }
 \clearpage  % Abstract ended, start a new page
 
 \addtotoc{ABSTRACT} % Add the "Abstract" page entry to the Contents
 \abstract{ \begin{spacing}{2}
 
-Students learning to code would benefit greatly from tailored feedback for each code submission in order to enhance coding standards. However, evaluating student code submissions and reviewing each one of them is a time consuming and tedious task for instructors and teaching assistants. For these reasons, we propose an end-to-end pipeline that automatically examines a program's design as well as its functionality to provide appropriate personalised feedback after evaluating the student code submission on a scale of one to ten. Three regressor models - Support Vector Regressor, Random Forest Regressor and Multi Layer Perceptron Regressor were trained with a dataset developed from a corpus of 480 Python programs submitted by students. In general, it was observed that the Random Forest Regressor outperformed the other two models. When the program submissions are graded out of ten, the Random Forest Regressor model has a mean absolute error (MAE) of 1.7 and root mean square error (RMSE) of 2.3.
-
-
+    Students learning to program would benefit greatly from
+    specific feedback for each program submission in order to
+    enhance their programming skills. However, evaluating
+    student program submissions and reviewing each one of
+    them is a time consuming and tedious task for instructors
+    and teaching assistants. For these reasons, we propose an
+    end-to-end pipeline that automatically examines program
+    design as well as its functionality to provide
+    appropriate specific feedback after evaluating the
+    student code submission on a scale of one to ten. Three
+    regressor models viz Support Vector Regressor, Random
+    Forest Regressor and Multi-Layer Perceptron Regressor
+    were trained with a dataset developed from a corpus of
+    480 Python programs submitted by students. In general, it
+    was observed that the Random Forest Regressor performed
+    better. When the program submissions are graded out of
+    ten, the Random Forest Regressor model has a mean
+    absolute error (MAE) of 1.7 and root mean square error
+    (RMSE) of 2.3.
 \end{spacing}
 }
 \clearpage
@@ -190,12 +227,12 @@ Students learning to code would benefit greatly from tailored feedback for each 
 \pagestyle{myheadings}  % Return the page headers back to the "fancy" style
 
 \begin{spacing}{1.5}
-\input{chapter1} % INTRODUCTION
+%\input{chapter1} % INTRODUCTION
 \input{chapter2} % LITERATURE SURVEY
 \input{chapter3} % DESIGN
 \input{chapter5} % IMPLEMENTATION
 \input{chapter4} % CONCLUSION AND FUTURE WORK
-\input{chapter6}
+%\input{chapter6}
 \input{chapter7}
 \input{chapter8}
 \input{chapter9}
@@ -210,46 +247,96 @@ Students learning to code would benefit greatly from tailored feedback for each 
 \begin{thebibliography}{99}
   \bibliographystyle{apa}
   
-\bibitem[1]{G} 2to3 - 'Automated Python 2to3 code translation' - https://docs.python.org/3/library/2to3.html 
+\bibitem[1]{G} ``2to3 -- Automated Python 2to3 code translation'', https://docs.python.org/3/library/2to3.html 
 
-\bibitem[2]{F} 'AST module' Python 3.10.4- https://docs.python.org/3/library/ast.html
+\bibitem[2]{F} ``AST module Python 3.10.4'', https://docs.python.org/3/library/ast.html
   
-\bibitem[3]{A} Azcona, D., Arora, P., Hsiao, I. H., \& Smeaton, A. (2019) 'user2code2vec: Embeddings for profiling students based on distributional representations of source code' , In Proceedings of the 9th International Conference on Learning Analytics \& Knowledge, pp. 86-95.
+\bibitem[3]{A} Azcona D, Arora P, Hsiao I H, Smeaton
+  A. (2019) ``user2code2vec: Embeddings for profiling students
+  based on distributional representations of source code'' ,
+  In Proceedings of the 9th International Conference on
+  Learning Analytics \& Knowledge, pp. 86-95.
 
-\bibitem[4]{O} Benjamin Paaßen, Barbara Hammer, Thomas William Price, Tiffany Barnes, Sebastian Gross, and Niels Pinkwart. (2017) 'The Continuous Hint Factory-Providing Hints in Vast and Sparsely Populated Edit Distance Spaces', arXiv preprint arXiv:1708.06564
+\bibitem[4]{O} Benjamin Paaben, Barbara Hammer, Thomas
+  William Price, Tiffany Barnes, Sebastian Gross, and Niels
+  Pinkwart. (2017) ``The Continuous Hint Factory-Providing
+  Hints in Vast and Sparsely Populated Edit Distance Spaces'',
+  arXiv preprint arXiv:1708.06564
 
-\bibitem[5]{B} Breiman, L. (2001). 'Random forests - Machine Learning' 45, 5-32.
+\bibitem[5]{B} Breiman L. (2001). ``Random forests --- Machine
+  Learning'' 45, 5-32.
 
-\bibitem[6]{N} Chris Piech, Jonathan Huang, Andy Nguyen, Mike Phulsuksombati, Mehran Sahami, and Leonidas Guibas. (2015) 'Learning program embeddings to propagate feedback on student code' , In Proceedings of the 32nd International Conference on International Conference on Machine Learning-Volume 37. JMLR. org, 1093–1102.
+\bibitem[6]{N} Chris Piech, Jonathan Huang, Andy Nguyen, Mike
+  Phulsuksombati, Mehran Sahami, Leonidas Guibas. (2015)
+  ``Learning program embeddings to propagate feedback on
+  student code'' , In Proceedings of the 32nd International
+  Conference on International Conference on Machine
+  Learning-Volume 37. JMLR. org, 1093–1102.
 
-\bibitem[7]{D} Drucker, Harris, et al. (1996) 'Support vector regression machines', Advances in neural information processing systems, 9.
+\bibitem[7]{D} Drucker, Harris, et al. (1996) ``Support
+  vector regression machines'', Advances in neural
+  information processing systems, 9.
 
-\bibitem[8]{H} Jović, Alan, Karla Brkić, and Nikola Bogunović. (2015) 'A review of feature selection methods with applications' , 38th international convention on information and communication technology, electronics and microelectronics (MIPRO). Ieee, 2015.
+\bibitem[8]{H} Jović, Alan, Karla Brkic, Nikola
+  Bogunovic. (2015) ``A review of feature selection methods
+  with applications'' , 38th international convention on
+  information and communication technology, electronics and
+  microelectronics (MIPRO). Ieee, 2015.
 
-\bibitem[9]{Q} Lili Mou, Ge Li, Lu Zhang, Tao Wang, and Zhi Jin. (2016)  'Convolutional Neural Networks over Tree Structures for Programming Language Processing', In AAAI, Vol. 2. 4
+\bibitem[9]{Q} Lili Mou, Ge Li, Lu Zhang, Tao Wang, Zhi
+  Jin. (2016) ``Convolutional Neural Networks over Tree
+  Structures for Programming Language Processing'', In AAAI,
+  Vol. 2. 4
 
-\bibitem[10]{M} Lili Mou, Ge Li, Yuxuan Liu, Hao Peng, Zhi Jin, Yan Xu, and Lu Zhang. (2014) 'Building program vector representations for deep learning' arXiv preprint arXiv:1409.3358.
+\bibitem[10]{M} Lili Mou, Ge Li, Yuxuan Liu, Hao Peng, Zhi
+  Jin, Yan Xu, Lu Zhang. (2014) ``Building program vector
+  representations for deep learning'', arXiv preprint
+  arXiv:1409.3358.
 
-\bibitem[11]{J} Maxim Rabinovich, Mitchell Stern, and Dan Klein. (2017) 'Abstract syntax networks for code generation and semantic parsing' ,arXiv preprint arXiv:1704.07535.
+\bibitem[11]{J} Maxim Rabinovich, Mitchell Stern, Dan
+  Klein. (2017) ``Abstract syntax networks for code
+  generation and semantic parsing'', arXiv preprint
+  arXiv:1704.07535.
 
-\bibitem[12]{L} Miltiadis Allamanis, Hao Peng, and Charles Sutton. (2016) 'A convolutional attention network for extreme summarization of source code', In International Conference on Machine Learning.' 2091–2100.
+\bibitem[12]{L} Miltiadis Allamanis, Hao Peng, Charles
+  Sutton. (2016) ``A convolutional attention network for
+  extreme summarization of source code'', In International
+  Conference on Machine Learning. 2091–2100.
 
-\bibitem[13]{C} Murtagh, Fionn. (1991) 'Multilayer perceptrons for classification and regression' ,Neurocomputing 2.5-6 : 183-197.
+\bibitem[13]{C} Murtagh, Fionn. (1991) ``Multilayer
+  perceptrons for classification and regression''
+  ,Neurocomputing 2.5-6 : 183-197.
 
-\bibitem[14]{T}Orr, J. Walker, and Nathaniel Russell. (2021) 'Automatic Assessment of the Design Quality of Python Programs with Personalized Feedback' , arXiv preprint arXiv:2106.01399 .
+\bibitem[14]{T}Orr, J Walker, Nathaniel Russell. (2021)
+  ``Automatic Assessment of the Design Quality of Python
+  Programs with Personalized Feedback'', arXiv preprint
+  arXiv:2106.01399 .
 
-\bibitem[15]{E} Pedregosa et al.,  (2011) 'Scikit-learn: Machine Learning in Python' JMLR 12, pp. 2825-2830.
+\bibitem[15]{E} Pedregosa et al., (2011) ``Scikit-learn:
+  Machine Learning in Python'', JMLR 12, pp. 2825-2830.
 
-\bibitem[16]{S} Pylint.org. 'Pylint - code analysis for python'. https://pylint.org.
+\bibitem[16]{S} Pylint.org. ``Pylint - code analysis for
+  python''. https://pylint.org.
 
-\bibitem[17]{P} Sebastian Gross, Bassam Mokbel, Benjamin Paaßen, Barbara Hammer, and Niels Pinkwart. (2014) 'Example-based feedback provision using structured solution spaces',International Journal of Learning Technology 10 9, 3 , 248–280.
+\bibitem[17]{P} Sebastian Gross, Bassam Mokbel, Benjamin
+  Paaben, Barbara Hammer, Niels Pinkwart. (2014)
+  ``Example-based feedback provision using structured
+  solution spaces'', International Journal of Learning
+  Technology 10 9, 3 , 248–280.
 
-\bibitem[18]{R} Sebastian Proksch, Sven Amann, Sarah Nadi, and Mira Mezini. (2016) 'A dataset of simplified syntax trees for C' , In Proceedings of the 13th International Conference on Mining Software Repositories. ACM, 476–479.
+\bibitem[18]{R} Sebastian Proksch, Sven Amann, Sarah Nadi,
+  Mira Mezini. (2016) ``A dataset of simplified syntax trees
+  for C'', In Proceedings of the 13th International
+  Conference on Mining Software Repositories. ACM, 476–479.
 
-\bibitem[19]{I} Uri Alon, Meital Zilberstein, Omer Levy, and Eran Yahav. (2018) 'A general path-based representation for predicting program properties', arXiv preprint arXiv:1803.09544.
+\bibitem[19]{I} Uri Alon, Meital Zilberstein, Omer Levy, Eran
+  Yahav. (2018) ``A general path-based representation for
+  predicting program properties'', arXiv preprint
+  arXiv:1803.09544.
 
-\bibitem[20]{K} Veselin Raychev, Martin Vechev, and Eran Yahav. (2014). 'Code completion with statistical language models',In Acm Sigplan Notices, Vol. 49. ACM, 419–428.
-
+\bibitem[20]{K} Veselin Raychev, Martin Vechev, Eran
+  Yahav. (2014). ``Code completion with statistical language
+  models'',In Acm Sigplan Notices, Vol. 49. ACM, 419–428.
 
 \end{thebibliography}
 
